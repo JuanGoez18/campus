@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Menu Campus</title>
+</head>
+<body>
+    <!-- Menu lateral -->
+    <div class="Menubx">
+        <img src="contenido/carrito.png" alt="" title="Menu Pedidos" id="menu-icon">
+        <span class="notification" id="menu-contador">0</span>
+    </div>
+    
+    <div class="Menu">
+        <img class="cerramenu" src="contenido/salir.png" alt="" title="Cerrar Menu" id="cerrar-menu">
+        <h2 class="titulo">Tu menu</h2>
+        <div class="contenido">
+            <p class="titulo-contenido">Contenido:</p>
+            <div class="cont-contenido"></div>
+        </div>
+        <div class="total">
+            <h2>Total</h2>
+            <div class="total-precio">$0.00</div>
+        </div>
+        <button class="btnPedirmenu" onclick="realizarPedido()">Realizar pedido</button>
+    </div>
+    <!-- Main -->
+    <div class="Main">
+        <h1>Menu</h1>
+        <h3>Bienvenido al menu de campus</h3>
+        <div class="Contenedor" id="space-list">
+            <div class="imagen-carga"><img src="contenido/carga.gif" alt=""></div>
+        </div>
+        
+    </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        cargarMenu();
+    });
+
+    function cargarMenu() {
+        $.ajax({
+            url: 'http://localhost:3001/servicios/pedir-plato',
+            method: 'GET',
+            contentType: 'application/json',
+            success: function(menuItems) {
+                let output = '';
+                menuItems.forEach(item => {
+                    output += `
+                        <div class="caja">
+                            <img src="contenido/${item.img}" alt="">
+                            <h3>${item.nombre_plato}</h3>
+                            <p>${item.descripcion}</p>
+                            <span>$${item.precio}</span>
+                            <div class="button"><button onclick="agregarpedido(a=${item.id},b='${item.nombre_plato}',c=${item.precio})">+</button></div>
+                        </div>
+                    `;
+                });
+                $('.Contenedor').html(output);
+            },
+            error: function(error) {
+                console.error('Error al cargar el menú:', error);
+                document.querySelector('.Contenedor').innerHTML = `
+                    <div class="error-message">
+                        <p>Error al cargar el sistema de menu. Por favor, intente de nuevo más tarde.</p>
+                    </div>
+                `;
+            }
+        });
+    }
+</script>
+
+<script>
+    let menu = {};
+
+function agregarpedido(id,nombre,precio){
+    if (menu[id]) {
+        menu[id].cantidad += 1;
+        menu[id].total += precio;
+    } else {
+        menu[id] = {
+            nombre: nombre,
+            cantidad: 1,
+            total: precio
+        };
+    }
+
+    actualizarMuenulateral();
+    actualizarNotificacion();
+}
+
+function restarPedido(id) {
+    if (menu[id] && menu[id].cantidad > 0) {
+        menu[id].cantidad -= 1;
+        menu[id].total -= menu[id].total / (menu[id].cantidad + 1);
+
+        if (menu[id].cantidad === 0) {
+            delete menu[id];
+        }
+    }
+    actualizarMuenulateral();
+    actualizarNotificacion();
+}
+
+function actualizarMuenulateral() {
+    let output = '';
+    let totalGeneral = 0;
+
+    for (let id in menu) {
+        const item = menu[id];
+        totalGeneral += item.total;
+        output += `
+            <div class="menu-item">
+                <p>Producto: ${item.nombre}</p>
+                <p>Cantidad: ${item.cantidad}</p>
+                <p>Total: $${item.total.toFixed(2)}</p>
+                <button onclick="restarPedido(${id})">Restar</button>
+            </div>
+        `;
+    }
+
+    document.querySelector('.cont-contenido').innerHTML = output;
+    document.querySelector('.total-precio').textContent = `$${totalGeneral.toFixed(2)}`;
+}
+
+function actualizarNotificacion() {
+    let totalCantidad = 0;
+
+    for (let id in menu) {
+        totalCantidad += menu[id].cantidad;
+    }
+
+    const notificationElement = document.querySelector('#menu-contador');
+    if (totalCantidad > 0) {
+        notificationElement.textContent = totalCantidad;
+        notificationElement.style.display = 'block';
+    } else {
+        notificationElement.style.display = 'none';
+    }
+}
+
+
+
+function realizarPedido() {
+    let platos = [];
+    let precios = [];
+
+    for (let id in menu) {
+        platos.push(menu[id].nombre);
+        precios.push(menu[id].total.toFixed(2));
+    }
+
+    if (platos.length === 0) {
+        alert("No hay productos en el pedido.");
+        return;
+    }
+
+    const nombreMesa = localStorage.getItem("nombreMesa");
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
+
+    const pedidoData = {
+        platos: platos.join(', '),
+        precios: precios.join(', '),
+        nombreMesa: nombreMesa,
+        nombreUsuario: nombreUsuario
+    };
+
+    $.ajax({
+        url: 'http://localhost:3001/servicios/guardar-pedido',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(pedidoData),
+        success: function(response) {
+            alert("Pedido realizado con éxito!");
+            menu = {};
+            actualizarMuenulateral();
+            actualizarNotificacion();
+            window.location.href = 'mesas.html';
+        },
+        error: function(error) {
+            console.error("Error al realizar el pedido:", error);
+            alert("Ocurrió un error al procesar el pedido.");
+        }
+    });
+} 
+</script>
+
+<script>
+    const menuIcon = document.querySelector("#menu-icon");
+    const menu2 = document.querySelector(".Menu")
+    const closeMenu = document.querySelector("#cerrar-menu");
+
+    menuIcon.addEventListener("click", () => {
+        menu2.classList.add("active");
+        console.log("mostar");
+    })
+
+    closeMenu.addEventListener("click", () => {
+        menu2.classList.remove("active");
+    })
+</script>
