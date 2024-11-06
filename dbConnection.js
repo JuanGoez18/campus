@@ -11,7 +11,7 @@ app.use(express.json()); // Para poder manejar JSON en el cuerpo de la solicitud
 app.use(express.static(path.join(__dirname, 'ruta/a/tu/proyecto'))); // Cambia esta ruta a la carpeta de tu proyecto
 
 const conexion = mysql.createConnection({
-    host: 'mysql.railway.internal', 
+    host: 'mysql.railway.app', 
     user: 'root',
     password: 'MwSowCmWHcEIcfisZWGBIIuaoMsCBVGD',
     database: 'railway',
