@@ -17,11 +17,13 @@ app.get('/', (req, res) => {
 // Importar el archivo de servicio
 const svcPedirMesa = require('./servicios/svc-pedir_mesa');
 const svcEnviarpedido = require('./servicios/svc-enviar_registro');
+const svcPanelControl = require('./servicios/svc-panel_control-1');
 
 
 // Ruta de los servicios
 app.use('/servicios/pedir-mesa', svcPedirMesa);
 app.use('/servicios/enviar-registro', svcEnviarpedido);
+app.use('/servicios/panel-control', svcPanelControl);
 
 // Iniciar el servidor
 app.listen(PORT, () => {
