@@ -202,7 +202,7 @@
             <script>
                 function cargarPlatos() {
                     $.ajax({
-                        url: 'http://localhost:3001/servicios/obtener-platos',
+                        url: 'https://campus-36nf.onrender.com/servicios/administrar-plato/obtener-platos',
                         method: 'GET',
                         success: function(platos) {
                             const contenedor = $('#lista-platos');
@@ -244,7 +244,7 @@
                     };
                 
                     $.ajax({
-                        url: 'http://localhost:3001/servicios/agregar-plato',
+                        url: 'https://campus-36nf.onrender.com/servicios/administrar-plato/agregar-plato',
                         method: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify(nuevoPlato),
@@ -261,7 +261,7 @@
 
                 function eliminarPlato(id) {
                     $.ajax({
-                        url: `http://localhost:3001/servicios/eliminar-plato/${id}`,
+                        url: `https://campus-36nf.onrender.com/servicios/administrar-plato/eliminar-plato/${id}`,
                         method: 'DELETE',
                         success: function(response) {
                             alert(response.mensaje);
@@ -283,7 +283,7 @@
                     };
                 
                     $.ajax({
-                        url: `http://localhost:3001/servicios/actualizar-plato/${id}`,
+                        url: `https://campus-36nf.onrender.com/servicios/administrar-plato/actualizar-plato/${id}`,
                         method: 'PUT',
                         contentType: 'application/json',
                         data: JSON.stringify(platoActualizado),
