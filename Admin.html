@@ -160,7 +160,7 @@
                     const numero = localStorage.getItem("telefonoUsuario");
 
                     $.ajax({
-                        url: 'https://campus-36nf.onrender.com/servicios/finalizar-pedido',
+                        url: 'https://campus-36nf.onrender.com/servicios/obtener-pedidos/finalizar-pedido',
                         method: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify({
