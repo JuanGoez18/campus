@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const conexion = require('../dbConnection');
 
-router.delete('/eliminar-solicitud/:nombreUsuario', (req, res) => {
+router.delete('/:nombreUsuario', (req, res) => {
     const nombreUsuario = req.params.nombreUsuario;
     const sqlDelete = 'DELETE FROM solicitudes WHERE nombre_usuario = ?';
 
