@@ -3,7 +3,7 @@ const router = express.Router();
 const conexion = require('../dbConnection');
 
 // Ruta para obtener todos los pedidos
-router.get('/', (req, res) => {
+router.get('/optener', (req, res) => {
     const sql = 'SELECT platos, precios, nombre_mesa, nombre_usuario FROM pedido';
     conexion.query(sql, (err, resultados) => {
         if (err) {
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 // Ruta para finalizar un pedido
-router.post('/finalizar-pedido', (req, res) => {
+router.post('/finalizar', (req, res) => {
     const { nombre_mesa, nombre_usuario, cc, numero } = req.body;
 
     // Primero obtenemos los precios del pedido correspondiente

@@ -124,7 +124,7 @@
             <script>
                 function cargarPedidos() {
                     $.ajax({
-                        url: 'https://campus-36nf.onrender.com/servicios/obtener-pedidos',
+                        url: 'https://campus-36nf.onrender.com/servicios/obtener-pedidos/optener',
                         method: 'GET',
                         success: function(pedidos) {
                             const contenedor = $('#lista-pedidos');
@@ -160,7 +160,7 @@
                     const numero = localStorage.getItem("telefonoUsuario");
 
                     $.ajax({
-                        url: 'https://campus-36nf.onrender.com/servicios/obtener-pedidos/finalizar-pedido',
+                        url: 'https://campus-36nf.onrender.com/servicios/obtener-pedidos/finalizar',
                         method: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify({
