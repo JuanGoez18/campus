@@ -15,6 +15,11 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'ruta/a/tu/proyecto'))); // Cambia esta ruta según sea necesario
 
+app.get('/servicios/pedir-mesa', (req, res) => {
+    // Aquí va el código para manejar la solicitud
+    res.json({ message: "Datos de la mesa" });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
