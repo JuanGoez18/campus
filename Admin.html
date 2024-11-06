@@ -96,7 +96,7 @@
 
             function actualizarEstado(id, estado) {
                 $.ajax({
-                    url: `http://localhost:3001/servicios/actualizar-estado/${id}`,
+                    url: `https://campus-36nf.onrender.com/servicios/panel-control//actualizar-estado/${id}`,
                     method: 'PUT',
                     contentType: 'application/json',
                     data: JSON.stringify({ estado: estado }),
