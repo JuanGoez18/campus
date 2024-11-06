@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const conexion = require('../dbConnection');
+const fs = require('fs');
 
-router.post('/enviar-registro', (req, res) => {
+router.post('/', (req, res) => {
     const { nombre_mesa, nombre_usuario, cc, telefono } = req.body;
     const sql = `INSERT INTO solicitudes (nombre_mesa, nombre_usuario, cc, telefono, estado) VALUES (?, ?, ?, ?, 'pendiente')`;
 
