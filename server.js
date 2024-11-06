@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 // Importar el archivo de servicio
-const svcPedirMesa = require('./servicios/svc-pedir-mesa');
+const svcPedirMesa = require('./servicios/svc-pedir_mesa');
 
 // Ruta de los servicios
 app.get('/servicios/pedir-mesa', (req, res) => {
