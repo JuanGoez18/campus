@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware para aceptar solicitudes JSON
+app.use(express.json());
+
 // Ruta principal
 app.get('/', (req, res) => {
     res.send('Bienvenido al servidor');
@@ -10,10 +13,9 @@ app.get('/', (req, res) => {
 // Importar el archivo de servicio
 const svcPedirMesa = require('./servicios/svc-pedir_mesa');
 
+
 // Ruta de los servicios
-app.get('/servicios/pedir-mesa', (req, res) => {
-    res.json(svcPedirMesa);  // Envía los datos del servicio
-});
+app.use('/servicios/pedir-mesa', svcPedirMesa);
 
 // Iniciar el servidor
 app.listen(PORT, () => {

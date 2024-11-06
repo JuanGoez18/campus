@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const conexion = require('../dbConnection');
+const conexion = require('../dbConnection'); // Asegúrate de que esta conexión esté funcionando correctamente
 const fs = require('fs');
 
-router.get('/pedir-mesa', (req, res) => {
+// Ruta que maneja la petición para pedir la mesa
+router.get('/', (req, res) => {
     conexion.query('SELECT id, nombre_mesa, cantidad_asiento, estado FROM mesa', (error, resultados) => {
         if (error) {
             console.error('Error en la consulta:', error);
@@ -11,16 +12,8 @@ router.get('/pedir-mesa', (req, res) => {
             return;
         }
 
-        fs.writeFile('mesas.json', JSON.stringify(resultados, null, 2), (err) => {
-            if (err) {
-                console.error('Error al guardar el archivo:', err);
-                res.status(500).json({ error: 'Error al guardar el archivo' });
-                return;
-            }
-            console.log('Resultados guardados en mesas.json');
-
-            res.json(resultados);
-        });
+        // Si todo va bien, respondemos con los resultados de la consulta
+        res.json(resultados);
     });
 });
 
