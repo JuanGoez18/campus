@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const conexion = require('../dbConnection');
 
-router.get('/verificar-permiso/:nombreUsuario', (req, res) => {
+router.get('/:nombreUsuario', (req, res) => {
     const nombreUsuario = req.params.nombreUsuario;
 
     const sql = 'SELECT estado FROM solicitudes WHERE nombre_usuario = ?';

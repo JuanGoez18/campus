@@ -22,7 +22,7 @@
             const nombreUsuario = localStorage.getItem("nombreUsuario");
             
             $.ajax({
-                url: `http://localhost:3001/servicios/verificar-permiso/${nombreUsuario}`,
+                url: `https://campus-36nf.onrender.com/servicios/verificar-permiso/${nombreUsuario}`,
                 method: 'GET',
                 success: function(response) {
                     if (response.permitido) {
