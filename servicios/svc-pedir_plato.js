@@ -9,7 +9,7 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get('/pedir-plato', (req, res) => {
+router.get('/', (req, res) => {
     // Ejemplo de consulta a la base de datos
     conexion.query('SELECT * FROM plato', (error, resultados) => {
         if (error) {

@@ -20,6 +20,8 @@ const svcEnviarpedido = require('./servicios/svc-enviar_registro');
 const svcPanelControl = require('./servicios/svc-panel_control-1');
 const svcverificarPermiso = require('./servicios/svc-verificar_permiso');
 const eleminarSolicitud = require('./servicios/svc-eliminar_solicitud');
+const pedirPlato = require('./servicios/svc-pedir_plato');
+const guardarPedido = require('./servicios/svc-guardar_pedido');
 
 
 // Ruta de los servicios
@@ -28,6 +30,8 @@ app.use('/servicios/enviar-registro', svcEnviarpedido);
 app.use('/servicios/panel-control', svcPanelControl);
 app.use('/servicios/verificar-permiso', svcverificarPermiso);
 app.use('/servicios/eliminar-solicitud', eleminarSolicitud);
+app.use('/servicios/pedir-plato', pedirPlato);
+app.use('/servicios/guardar-pedido', guardarPedido);
 
 // Iniciar el servidor
 app.listen(PORT, () => {

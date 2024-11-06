@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const conexion = require('../dbConnection');
 
-router.post('/guardar-pedido', (req, res) => {
+router.post('/', (req, res) => {
     const { platos, precios, nombreMesa, nombreUsuario } = req.body;
     const sql = `INSERT INTO pedido (platos, precios, nombre_mesa, nombre_usuario) VALUES (?, ?, ?, ?)`;
     
