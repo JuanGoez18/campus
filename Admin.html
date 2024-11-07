@@ -325,8 +325,125 @@
         <div id="Mesas" class="hidden">
             <h2>Mesas</h2>
             <p>Visualizacion de mesas Campus</p>
-
-
+            <form id="formulario-mesa">
+                <input type="hidden" id="mesa_id">
+                <input type="text" id="nombre_mesa" placeholder="Nombre de la mesa" required>
+                <input type="number" id="cantidad_asiento" placeholder="Cantidad de asientos" required>
+                <button type="button" onclick="agregarMesa()" id="boton-agregar">Agregar Mesa</button>
+                <button type="button" onclick="actualizarMesa()" id="boton-actualizar">Actualizar Mesa</button>
+                <button type="button" onclick="limpiarFormularioMesa()">Limpiar</button>
+            </form>
+            <div id="lista-mesas"></div>
+            <script>
+                function cargarMesas() {
+                    $.ajax({
+                        url: 'https://campus-36nf.onrender.com/servicios/administrar-mesa/obtener-mesas',
+                        method: 'GET',
+                        success: function(mesas) {
+                            const contenedor = $('#lista-mesas');
+                            contenedor.empty();
+                            
+                            if (mesas.length === 0) {
+                                contenedor.append('<p>No hay mesas disponibles</p>');
+                            } else {
+                                mesas.forEach(mesa => {
+                                    const mesaHTML = `
+                                        <div class="mesa">
+                                            <p>Nombre: ${mesa.nombre_mesa}</p>
+                                            <p>Cantidad de asientos: ${mesa.cantidad_asiento}</p>
+                                            <button onclick="eliminarMesa(${mesa.id})">Eliminar</button>
+                                            <button onclick="mostrarFormularioActualizarMesa(${mesa.id}, '${mesa.nombre_mesa}', ${mesa.cantidad_asiento})">Actualizar</button>
+                                        </div>
+                                    `;
+                                    contenedor.append(mesaHTML);
+                                });
+                            }
+                        },
+                        error: function() {
+                            console.error("Error al cargar las mesas.");
+                        }
+                    });
+                }
+            
+                setInterval(cargarMesas, 5000);
+            
+                function agregarMesa() {
+                    const nuevaMesa = {
+                        nombre_mesa: $('#nombre_mesa').val(),
+                        cantidad_asiento: parseInt($('#cantidad_asiento').val(), 10)
+                    };
+            
+                    $.ajax({
+                        url: 'https://campus-36nf.onrender.com/servicios/administrar-mesa/agregar-mesa',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(nuevaMesa),
+                        success: function() {
+                            alert('Mesa agregada con éxito');
+                            limpiarFormularioMesa();
+                            cargarMesas();
+                        },
+                        error: function() {
+                            alert('Error al agregar la mesa');
+                        }
+                    });
+                }
+            
+                function actualizarMesa() {
+                    const id = $('#mesa_id').val();
+                    const mesaActualizada = {
+                        nombre_mesa: $('#nombre_mesa').val(),
+                        cantidad_asiento: parseInt($('#cantidad_asiento').val(), 10)
+                    };
+            
+                    $.ajax({
+                        url: `https://campus-36nf.onrender.com/servicios/administrar-mesa/actualizar-mesa/${id}`,
+                        method: 'PUT',
+                        contentType: 'application/json',
+                        data: JSON.stringify(mesaActualizada),
+                        success: function() {
+                            alert('Mesa actualizada con éxito');
+                            limpiarFormularioMesa();
+                            cargarMesas();
+                        },
+                        error: function() {
+                            alert('Error al actualizar la mesa');
+                        }
+                    });
+                }
+            
+                function eliminarMesa(id) {
+                    if (confirm('¿Estás seguro de que deseas eliminar esta mesa?')) {
+                        $.ajax({
+                            url: `https://campus-36nf.onrender.com/servicios/administrar-mesa/eliminar-mesa/${id}`,
+                            method: 'DELETE',
+                            success: function() {
+                                alert('Mesa eliminada con éxito');
+                                cargarMesas();
+                            },
+                            error: function() {
+                                alert('Error al eliminar la mesa');
+                            }
+                        });
+                    }
+                }
+            
+                function mostrarFormularioActualizarMesa(id, nombre, cantidadAsiento) {
+                    $('#mesa_id').val(id);
+                    $('#nombre_mesa').val(nombre);
+                    $('#cantidad_asiento').val(cantidadAsiento);
+                    $('#boton-agregar').hide();
+                    $('#boton-actualizar').show();
+                }
+            
+                function limpiarFormularioMesa() {
+                    $('#mesa_id').val('');
+                    $('#nombre_mesa').val('');
+                    $('#cantidad_asiento').val('');
+                    $('#boton-agregar').show();
+                    $('#boton-actualizar').hide();
+                }
+            </script>
         </div>
     </div>
     </section>
