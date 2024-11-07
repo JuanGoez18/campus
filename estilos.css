@@ -454,6 +454,7 @@ body{
 
     .Contenedor2{
         margin: 0%;
+        flex-direction: column;
     }
 
     #main-pantallacarga{
