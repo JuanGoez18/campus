@@ -166,8 +166,8 @@
   cursor: pointer;
 }
 
-#solicitudes-pendientes p{
-  font-size: 20px;
+#solicitudes-pendientes .solicitudesp{
+  font-size: 15px;
   font-weight: 600;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: red;
