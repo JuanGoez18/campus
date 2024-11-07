@@ -432,7 +432,7 @@ body{
 
 @media (max-width:700px){
     .Main{
-        padding: 55px;
+        padding: 20px;
     }
     
     .Contenedor{
@@ -450,11 +450,6 @@ body{
         justify-content: center;
         max-width: 200px;
         max-height: 270px;
-    }
-
-    .Contenedor2{
-        margin: 0%;
-        flex-direction: column;
     }
 
     #main-pantallacarga{
