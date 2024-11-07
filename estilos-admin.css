@@ -176,6 +176,8 @@
   color: red;
 }
 
+/*panel administracion de platos*/
+
 #formulario-plato{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -227,6 +229,63 @@
 }
 
 .plato button:hover{
+  background-color: #009a1a;
+  cursor: pointer;
+}
+
+/*panel administracion de mesas*/
+
+#formulario-mesa{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#formulario-mesa input{
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 5px;
+  margin: 5px;
+}
+
+#formulario-mesa button{
+  border: none;
+  border-radius: 10px;
+  background-color: #00bb1f;
+  padding: 5px;
+  margin: 5px;
+}
+
+#formulario-mesa button:hover{
+  background-color: #009a1a;
+  cursor: pointer;
+}
+
+#lista-mesas .mesa{
+  margin-top: 3%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #5e5e5e;
+  min-width: 300px;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mesa button{
+  width: 48%;
+  border: none;
+  padding: 5px;
+  background-color: #00bb1f;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.mesa button:hover{
   background-color: #009a1a;
   cursor: pointer;
 }
