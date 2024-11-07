@@ -58,6 +58,8 @@
         });
     }
 
+    setInterval(cargarMesas, 5000);
+
     function reservarMesa(id, nombre_mesa, estadoTexto) {
         if(estadoTexto=="OCUPADO"){
             alert('Esta mesa esta reservada');
