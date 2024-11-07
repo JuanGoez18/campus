@@ -452,6 +452,11 @@ body{
         max-height: 270px;
     }
 
+    .Contenedor2{
+        left: 0;
+        justify-content: center;
+    }
+
     #main-pantallacarga{
         height: 932px;
     }
