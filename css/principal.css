@@ -341,6 +341,7 @@ label.checkbtn{
     display: flex;
     padding: 0;
     width: 400%;
+    height: 100%;
     animation: slide 20s infinite alternate ease-in-out;
 }
 
@@ -440,13 +441,14 @@ label.checkbtn{
     text-align: center;
     border-radius: 10px;
     border: 1px solid rgba(196, 196, 196, 0.426);
-    width: 100%;
+    width: 200px;
+    height: 290px;
+    max-height: 290px;
     max-width: 280px; /* Tamaño máximo de cada tarjeta */
 }
 
 .plato img {
-    width: 200px; /* Ajustar el tamaño de las imágenes */
-    height: auto;
+    aspect-ratio: 4/4;
     filter: drop-shadow(0 0 0.9rem rgb(0, 255, 0));
 }
 
