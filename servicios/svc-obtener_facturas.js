@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const conexion = require('../dbConnection');
 
-router.get('/facturas', (req, res) => {
+router.get('/', (req, res) => {
     const sql = 'SELECT pago_total, fecha, nombre_mesa, nombre_usuario, cc, numero FROM factura';
     
     conexion.query(sql, (err, resultados) => {
