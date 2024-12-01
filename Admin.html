@@ -520,7 +520,7 @@
                             method: 'GET',
                             success: function(data) {
                                 const tbody = $("#tabla-facturas");
-                                tablaDatos.empty();
+                                tbody.empty();
 
                                 data.forEach(factura => {
                                     const fechaOriginal = new Date(factura.fecha);

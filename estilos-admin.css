@@ -315,6 +315,25 @@
   font-weight: bold;
 }
 
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.paginacion button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #00bb1f;
+}
+
+.paginacion button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
 
 @media (max-width:700px){
   .resumen{

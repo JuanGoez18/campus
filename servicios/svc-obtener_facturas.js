@@ -7,18 +7,21 @@ router.get('/', (req, res) => {
     const offset = parseInt(req.query.offset) || 0;
     const limit = parseInt(req.query.limit) || 10;
 
-    const sql = 'SELECT pago_total, fecha, nombre_mesa, nombre_usuario, cc, numero FROM factura';
+    const sql = `
+        SELECT pago_total, fecha, nombre_mesa, nombre_usuario, cc, numero 
+        FROM factura 
+        LIMIT ? OFFSET ?`;
     
-    conexion.query(sql, (err, resultados) => {
-        if (err) {
-            console.error("Error al obtener facturas:", err);
-            res.status(500).send("Error al obtener las facturas.");
-        } else {
-            res.json(resultados);
-        }
+        conexion.query(sql, [limit, offset], (err, resultados) => {
+            if (err) {
+                console.error("Error al obtener las facturas:", err);
+                res.status(500).send("Error al obtener las facturas");
+            } else {
+                res.json(resultados);
+            }
+        });
     });
-});
-
+    
 router.get('/total', (req, res) => {
     const sql = 'SELECT COUNT(*) AS total FROM factura';
     conexion.query(sql, (err, resultados) => {
