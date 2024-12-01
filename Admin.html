@@ -516,7 +516,7 @@
                         const offset = (pagina - 1) * limitePorPagina;
 
                         $.ajax({
-                            url: 'https://campus-36nf.onrender.com/servicios/obtener-factura?offset=${offset}&limit=${limitePorPagina}',
+                            url: `https://campus-36nf.onrender.com/servicios/obtener-factura?offset=${offset}&limit=${limitePorPagina}`,
                             method: 'GET',
                             success: function(data) {
                                 const tbody = $("#tabla-facturas");

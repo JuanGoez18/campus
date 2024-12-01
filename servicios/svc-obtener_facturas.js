@@ -5,7 +5,7 @@ const conexion = require('../dbConnection');
 router.get('/', (req, res) => {
 
     const offset = parseInt(req.query.offset) || 0;
-    const limit = parseInt(req.query.limit) || 10;
+    const limit = parseInt(req.query.limit) || 8;
 
     const sql = `
         SELECT pago_total, fecha, nombre_mesa, nombre_usuario, cc, numero 
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
             }
         });
     });
-    
+
 router.get('/total', (req, res) => {
     const sql = 'SELECT COUNT(*) AS total FROM factura';
     conexion.query(sql, (err, resultados) => {
