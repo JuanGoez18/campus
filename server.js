@@ -26,6 +26,7 @@ const svcObtenerPedidos = require('./servicios/svc-obtener_pedido');
 const svcAdministrarplatos = require('./servicios/svc-administrar_platos');
 const svcAdministrarMesas = require('./servicios/svc-administrar_mesas');
 const svcObtenerfacturas = require('./servicios/svc-obtener_facturas');
+const svcResumenGeneral = require('./servicios/svc-reumen_general');
 
 
 // Ruta de los servicios
@@ -40,6 +41,7 @@ app.use('/servicios/obtener-pedidos', svcObtenerPedidos);
 app.use('/servicios/administrar-plato', svcAdministrarplatos);
 app.use('/servicios/administrar-mesa', svcAdministrarMesas);
 app.use('/servicios/obtener-factura', svcObtenerfacturas);
+app.use('/servicios/resumen-ventas', svcResumenGeneral);
 
 // Iniciar el servidor
 app.listen(PORT, () => {

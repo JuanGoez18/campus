@@ -1,10 +1,10 @@
 const express = require('express');
-const router = express.Router(); // Usar el router de Express
-const conexion = require('../dbConnection'); // Asegúrate de que la ruta sea correcta
+const router = express.Router();
+const conexion = require('../dbConnection');
 const fs = require('fs');
 
 router.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Permite solicitudes desde cualquier origen
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
