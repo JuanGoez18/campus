@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <title>Mesas Campus</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
         <h1>Mesas</h1>
         <h3>Visual de espacios en campus.</h3>
         <div class="Contenedor2" id="space-list2">
-            <div class="imagen-carga"><img src="contenido/carga.gif" alt=""></div>
+            <div class="imagen-carga"><img src="informacion/carga.gif" alt=""></div>
         </div>
     </div>
 </body>
@@ -33,7 +33,7 @@
                 let output = '';
                 mesas.forEach(mesa => {
                     let estadoTexto = mesa.estado ? 'OCUPADO' : 'DISPONIBLE';
-                    let imagenSrc = mesa.estado ? `contenido/mesa${Math.floor(Math.random() * 3) + 1}.gif` : 'contenido/mesa_0.png';
+                    let imagenSrc = mesa.estado ? `informacion/mesa${Math.floor(Math.random() * 3) + 1}.gif` : 'informacion/mesa_0.png';
                     
                     output += `
                         <div class="caja2">
@@ -57,8 +57,6 @@
             }
         });
     }
-
-    //setInterval(cargarMesas, 20000);
 
     function reservarMesa(id, nombre_mesa, estadoTexto) {
         if(estadoTexto=="OCUPADO"){
