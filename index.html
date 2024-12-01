@@ -411,7 +411,13 @@
 
 <!-- secciones. pagina  -->
 
-<script src="/java/principal-web.js"></script>
+
+<script>
+  document.addEventListener("scroll", function() {
+    const header = document.querySelector("header.main-header");
+    header.classList.toggle("scrolled", window.scrollY > 50); // Cambia 50 por la cantidad de scroll deseada
+});
+</script>
 
 
 
