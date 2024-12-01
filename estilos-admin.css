@@ -299,6 +299,23 @@
   cursor: pointer;
 }
 
+.tabla-facturas{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-facturas th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabla-facturas th {
+  background-color: #3bd054;
+  font-weight: bold;
+}
+
+
 @media (max-width:700px){
   .resumen{
     flex-direction: column;
