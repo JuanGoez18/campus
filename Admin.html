@@ -473,6 +473,11 @@
                         success: function(data) {
                             const tbody = $("#tabla-facturas");
                             data.forEach(factura => {
+                                const fechaOriginal = new Date(factura.fecha);
+                                const fechaFormateada = `${fechaOriginal.getDate().toString().padStart(2, '0')}/${
+                                    (fechaOriginal.getMonth() + 1).toString().padStart(2, '0')
+                                }/${fechaOriginal.getFullYear()}`;
+                                
                                 const fila = `
                                     <tr>
                                         <td>${factura.numero}</td>
@@ -480,7 +485,7 @@
                                         <td>${factura.cc}</td>
                                         <td>${factura.nombre_mesa}</td>
                                         <td>${factura.pago_total}</td>
-                                        <td>${factura.fecha}</td>
+                                        <td>${fechaFormateada}</td>
                                     </tr>
                                 `;
                                 tbody.append(fila);
