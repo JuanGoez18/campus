@@ -249,7 +249,7 @@
         };
     
         $.ajax({
-            url: 'http://localhost:3001/servicios/guardar-pedido',
+            url: 'https://campus-36nf.onrender.com/servicios/guardar-pedido',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(pedidoData),
@@ -258,7 +258,7 @@
                 menu = {};
                 actualizarMuenulateral();
                 actualizarNotificacion();
-                window.location.href = 'mesas.html';
+                window.location.href = 'index.html';
             },
             error: function(error) {
                 console.error("Error al realizar el pedido:", error);
@@ -289,9 +289,6 @@
     <script src="java/main.js"></script>
     <script src="java/producto.js"></script>
 
-      
-    
-    
-    
+
 </body>
 </html>
