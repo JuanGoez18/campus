@@ -881,6 +881,14 @@ footer ul {
     text-decoration: underline; /* Subrayar al pasar el mouse */
 }
 
+.main-menu li #iniciarp{
+    color: rgb(8, 241, 0);
+}
+
+.main-menu li #iniciarp:hover{
+    color: rgb(9, 255, 0);
+}
+
 /* Espaciado para dispositivos móviles */
 @media (max-width: 768px) {
 .wrap-footer {
