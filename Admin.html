@@ -29,6 +29,7 @@
             <a href="#" onclick="showSection('Pedidos')">Pedidos</a>
             <a href="#" onclick="showSection('Productos')">Productos</a>
             <a href="#" onclick="showSection('Mesas')">Mesas</a>
+            <a href="#" onclick="showSection('factura')">Facturas</a>
         </div>
         <div class="main-content">
         <div id="dashboard">
@@ -443,6 +444,54 @@
                     $('#boton-agregar').show();
                     $('#boton-actualizar').hide();
                 }
+            </script>
+        </div>
+        <div id="factura" class="hidden">
+            <h2>Facturas</h2>
+            <p>Visualizacion de Facturas Campus</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Nombre del Usuario</th>
+                        <th>CC</th>
+                        <th>Nombre de la Mesa</th>
+                        <th>Pago Total</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-facturas">
+                    <!-- Aquí se llenarán las filas dinámicamente -->
+                </tbody>
+            </table>
+
+            <script>
+                $(document).ready(function() {
+                    $.ajax({
+                        url: 'https://campus-36nf.onrender.com/servicios/facturas',
+                        method: 'GET',
+                        success: function(data) {
+                            const tbody = $("#tabla-facturas");
+                            data.forEach(factura => {
+                                const fila = `
+                                    <tr>
+                                        <td>${factura.numero}</td>
+                                        <td>${factura.nombre_usuario}</td>
+                                        <td>${factura.cc}</td>
+                                        <td>${factura.nombre_mesa}</td>
+                                        <td>${factura.pago_total}</td>
+                                        <td>${factura.fecha}</td>
+                                    </tr>
+                                `;
+                                tbody.append(fila);
+                            });
+                        },
+                        error: function(error) {
+                            console.error("Error al obtener facturas:", error);
+                            alert("No se pudieron cargar las facturas.");
+                        }
+                    });
+                });
             </script>
         </div>
     </div>
