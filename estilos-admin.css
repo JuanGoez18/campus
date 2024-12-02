@@ -302,6 +302,7 @@
 .tabla-facturas{
   width: 100%;
   border-collapse: collapse;
+  min-height: 280px;
 }
 
 .tabla-facturas th, table td {
@@ -329,6 +330,11 @@
   border: none;
   cursor: pointer;
   background-color: #00bb1f;
+}
+
+
+.paginacion button:hover{
+  background-color: #009a1a;
 }
 
 .paginacion button:disabled {
