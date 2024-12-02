@@ -554,7 +554,7 @@
                             method: 'GET',
                             success: function (response) {
                                 const totalFacturas = response.total;
-                                const totalPaginas = Math.ceil(totalFacturas / limitePorPagina);
+                                totalPaginas = Math.ceil(totalFacturas / limitePorPagina);
                 
                                 // Actualiza el estado de los botones
                                 $('#anterior').prop('disabled', pagina === 1);
