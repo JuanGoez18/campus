@@ -505,12 +505,14 @@
                     <button id="anterior" disabled>Anterior</button>
                     <span id="pagina-actual">1</span>
                     <button id="siguiente">Siguiente</button>
+                    <button id="ultimos">Últimos</button>
                 </div>
             </div>
             <script>
                 $(document).ready(function () {
                     let paginaActual = 1;
-                    const limitePorPagina = 10;
+                    const limitePorPagina = 8;
+                    let totalPaginas = 1;
 
                     function cargarFacturas(pagina) {
                         const offset = (pagina - 1) * limitePorPagina;
@@ -573,6 +575,11 @@
                 
                     $('#siguiente').click(function () {
                         paginaActual++;
+                        cargarFacturas(paginaActual);
+                    });
+
+                    $('#ultimos').click(function () {
+                        paginaActual = totalPaginas;
                         cargarFacturas(paginaActual);
                     });
                 
