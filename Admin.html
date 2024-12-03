@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Angkor&family=Raleway:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos-admin.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Administracion</title>
 </head>
@@ -88,7 +89,7 @@
                         },
                         error: function (error) {
                             console.error("Error al obtener el resumen de ventas:", error);
-                            alert("No se pudo cargar el resumen de ventas.");
+                            console.log("No se pudo cargar el resumen de ventas.");
                         }
                     });
                 });
@@ -138,12 +139,25 @@
                     contentType: 'application/json',
                     data: JSON.stringify({ estado: estado }),
                     success: function(response) {
-                        alert("Solicitud actualizada.");
+                        const mensaje = document.createElement("div");
+                        mensaje.innerText = "Solicitud actualizada!";
+                        mensaje.className = "mensaje";
+                        document.body.appendChild(mensaje);
+
+                        setTimeout(() => {
+                        mensaje.remove();
+                        }, 1500);
                         cargarSolicitudes();
                     },
                     error: function(error) {
-                        console.error("Error al actualizar la solicitud:", error);
-                        alert("Ocurrió un error.");
+                        const mensaje = document.createElement("div");
+                        mensaje.innerText = "Ocurrió un error!!!";
+                        mensaje.className = "mensaje2";
+                        document.body.appendChild(mensaje);
+
+                        setTimeout(() => {
+                        mensaje.remove();
+                        }, 1500);
                     }
                 });
             }
@@ -207,12 +221,25 @@
                             numero: numero,
                         }),
                         success: function(response) {
-                            alert(response.mensaje);
+                            const mensaje = document.createElement("div");
+                            mensaje.innerText = response.mensaje;
+                            mensaje.className = "mensaje";
+                            document.body.appendChild(mensaje);
+
+                            setTimeout(() => {
+                            mensaje.remove();
+                            }, 1500);
                             cargarPedidos();
                         },
                         error: function() {
-                            console.error("Error al finalizar el pedido.");
-                            alert("Ocurrió un error al finalizar el pedido.");
+                            const mensaje = document.createElement("div");
+                            mensaje.innerText = "Error al finalizar el pedido!!!";
+                            mensaje.className = "mensaje2";
+                            document.body.appendChild(mensaje);
+
+                            setTimeout(() => {
+                            mensaje.remove();
+                            }, 1500);
                         }
                     });
                 }
@@ -286,7 +313,14 @@
                         contentType: 'application/json',
                         data: JSON.stringify(nuevoPlato),
                         success: function(response) {
-                            alert(response.mensaje);
+                            const mensaje = document.createElement("div");
+                            mensaje.innerText = response.mensaje;
+                            mensaje.className = "mensaje";
+                            document.body.appendChild(mensaje);
+
+                            setTimeout(() => {
+                            mensaje.remove();
+                            }, 1500);
                             cargarPlatos();
                         },
                         error: function() {
@@ -301,7 +335,6 @@
                         url: `https://campus-36nf.onrender.com/servicios/administrar-plato/eliminar-plato/${id}`,
                         method: 'DELETE',
                         success: function(response) {
-                            alert(response.mensaje);
                             cargarPlatos();
                         },
                         error: function() {
@@ -325,7 +358,6 @@
                         contentType: 'application/json',
                         data: JSON.stringify(platoActualizado),
                         success: function(response) {
-                            alert(response.mensaje);
                             cargarPlatos();
                         },
                         error: function() {
@@ -416,12 +448,11 @@
                         contentType: 'application/json',
                         data: JSON.stringify(nuevaMesa),
                         success: function() {
-                            alert('Mesa agregada con éxito');
                             limpiarFormularioMesa();
                             cargarMesas();
                         },
                         error: function() {
-                            alert('Error al agregar la mesa');
+                            console.log('Error al agregar la mesa');
                         }
                     });
                 }
@@ -439,12 +470,11 @@
                         contentType: 'application/json',
                         data: JSON.stringify(mesaActualizada),
                         success: function() {
-                            alert('Mesa actualizada con éxito');
                             limpiarFormularioMesa();
                             cargarMesas();
                         },
                         error: function() {
-                            alert('Error al actualizar la mesa');
+                            console.log('Error al actualizar la mesa');
                         }
                     });
                 }
@@ -455,11 +485,10 @@
                             url: `https://campus-36nf.onrender.com/servicios/administrar-mesa/eliminar-mesa/${id}`,
                             method: 'DELETE',
                             success: function() {
-                                alert('Mesa eliminada con éxito');
                                 cargarMesas();
                             },
                             error: function() {
-                                alert('Error al eliminar la mesa');
+                                console.log('Error al eliminar la mesa');
                             }
                         });
                     }

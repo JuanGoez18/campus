@@ -26,11 +26,33 @@
                 method: 'GET',
                 success: function(response) {
                     if (response.permitido) {
-                        alert("Permiso concedido. Redirigiendo al menú...");
-                        window.location.href = 'menu.html';
-                    } else if (response.denegado) { 
-                        alert("Acceso denegado. Su solicitud no fue aprobada.");
-                        window.location.href = 'mesas.html';
+                        const mensaje = document.createElement("div");
+                        mensaje.innerText = "Acceso aprovado!";
+                        mensaje.className = "mensaje";
+                        document.body.appendChild(mensaje);
+
+                        setTimeout(() => {
+                        mensaje.remove();
+                        }, 1800);
+
+                        setTimeout(() => {
+                            window.location.href = 'menu.html';
+                            }, 3000);
+                    } else if (response.denegado) {
+                        const mensaje = document.createElement("div");
+                        mensaje.innerText = "Acceso denegado. Su solicitud no fue aprobada!!!";
+                        mensaje.className = "mensaje2";
+                        document.body.appendChild(mensaje);
+
+                        setTimeout(() => {
+                        mensaje.remove();
+                        }, 1800);
+
+                        setTimeout(() => {
+                            window.location.href = 'mesas.html';
+                            }, 3000);
+
+                        //window.location.href = 'mesas.html';
                     }
                 },
                 error: function() {

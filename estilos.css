@@ -49,7 +49,8 @@ body{
     border-radius: 15px;
     box-shadow: 0 0 8px 3px #ccc;
     transition: transform .4s ease-in-out, border .4s ease-in-out;
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #3b3b3b;
 }
 
 .caja:hover{
@@ -60,6 +61,7 @@ body{
 .caja img{
     width: 100%;
     height: 50%;
+    aspect-ratio: 4/10;
     border-radius: 23px;
 }
 
@@ -79,6 +81,11 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     }
+
+.caja span{
+    color: #000000;
+    font-weight: 900;
+}
 
 .caja .button{
     background-color: #fdfdfd;
@@ -104,6 +111,32 @@ body{
     font-weight: 600;
     color: #999;
 }
+
+.mensaje {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(0, 209, 122);
+    padding: 13px;
+    border-radius: 19px;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    z-index: 1000;
+  }
+
+  .mensaje2 {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(209, 0, 0);
+    padding: 13px;
+    border-radius: 19px;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    z-index: 1000;
+  }
 
 
 /* #####################  carro menu #################*/
@@ -225,7 +258,7 @@ body{
 
 .notification {
     position: absolute;
-    top: 50px;
+    top: 155px;
     right: 10px;
     background-color: red;
     color: white;
@@ -250,8 +283,8 @@ body{
 
 
 .Contenedor2 .caja2{
-    min-height: 350px;
-    min-width: 280px;
+    min-height: 385px;
+    min-width: 290px;
     max-width: 400px;
     margin: 10%;
     }
@@ -269,7 +302,7 @@ body{
     }
 
 .caja2 .button2, button{
-    width: 90px;
+    width: 110px;
     height: 27px;
     background-color: rgb(0, 255, 149);
     font-weight: 800;
@@ -301,6 +334,7 @@ body{
 .caja2 img{
     width: 100%;
     height: 70%;
+    aspect-ratio: 4/3;
     border-radius: 23px;
 }
 
@@ -319,6 +353,12 @@ body{
     font-size: 12px;
     font-weight: 800;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.caja2 p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    color: #000000;
 }
 
 /* ##################################################*/

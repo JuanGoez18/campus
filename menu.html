@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="estilos.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -170,6 +171,17 @@
     
         actualizarMuenulateral();
         actualizarNotificacion();
+        
+        //mensaje producto gragado
+        const mensaje = document.createElement("div");
+        mensaje.innerText = "Producto agregado al CarroMenu!";
+        mensaje.className = "mensaje";
+        document.body.appendChild(mensaje);
+
+        // Opcional: Quitar el mensaje después de 5 segundos
+        setTimeout(() => {
+        mensaje.remove();
+        }, 1500);
     }
     
     function restarPedido(id) {
@@ -234,7 +246,14 @@
         }
     
         if (platos.length === 0) {
-            alert("No hay productos en el pedido.");
+            const mensaje = document.createElement("div");
+            mensaje.innerText = "No hay producto en CarritoMenu!!!";
+            mensaje.className = "mensaje2";
+            document.body.appendChild(mensaje);
+
+            setTimeout(() => {
+            mensaje.remove();
+            }, 1500);
             return;
         }
     
@@ -254,15 +273,31 @@
             contentType: 'application/json',
             data: JSON.stringify(pedidoData),
             success: function(response) {
-                alert("Pedido realizado con éxito!");
+                const mensaje = document.createElement("div");
+                mensaje.innerText = "Pedido realizado con éxito!";
+                mensaje.className = "mensaje";
+                document.body.appendChild(mensaje);
+
+                setTimeout(() => {
+                mensaje.remove();
+                }, 1500);
+
                 menu = {};
                 actualizarMuenulateral();
                 actualizarNotificacion();
-                window.location.href = 'index.html';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                    }, 2000);
             },
             error: function(error) {
-                console.error("Error al realizar el pedido:", error);
-                alert("Ocurrió un error al procesar el pedido.");
+                const mensaje = document.createElement("div");
+                mensaje.innerText = "Error al realizar el pedido!!!", error;
+                mensaje.className = "mensaje2";
+                document.body.appendChild(mensaje);
+
+                setTimeout(() => {
+                mensaje.remove();
+                }, 1500);
             }
         });
     } 

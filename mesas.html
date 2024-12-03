@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="estilos.css">
     <title>Mesas Campus</title>
 </head>
 <body>
@@ -60,9 +61,15 @@
 
     function reservarMesa(id, nombre_mesa, estadoTexto) {
         if(estadoTexto=="OCUPADO"){
-            alert('Esta mesa esta reservada');
+            const mensaje = document.createElement("div");
+            mensaje.innerText = "Esta mesa esta reservada!!!";
+            mensaje.className = "mensaje2";
+            document.body.appendChild(mensaje);
+
+            setTimeout(() => {
+            mensaje.remove();
+            }, 1500);
         }else{
-            alert(`La ${nombre_mesa} fue seleccionada para reservar.`);
             localStorage.setItem("nombreMesa", nombre_mesa)
             window.location.href = 'registro.html';
         }

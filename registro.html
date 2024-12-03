@@ -51,16 +51,13 @@
             contentType: 'application/json',
             data: JSON.stringify(datosRegistro),
             success: function(response) {
-                alert("Solicitud enviada para revisión.");
-                window.location.href = "validar.html"; // Redirige a una página de espera
+                window.location.href = "validar.html";
             },
             error: function(error) {
                 console.error("Error al enviar el registro:", error);
                 alert("Ocurrió un error al procesar la solicitud.");
             }
         });
-        //
-        /*window.location.href = "validar.html";*/
     });
 </script>
 </html>
