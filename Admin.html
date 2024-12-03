@@ -358,6 +358,14 @@
                         contentType: 'application/json',
                         data: JSON.stringify(platoActualizado),
                         success: function(response) {
+                            const mensaje = document.createElement("div");
+                            mensaje.innerText = response.mensaje;
+                            mensaje.className = "mensaje";
+                            document.body.appendChild(mensaje);
+
+                            setTimeout(() => {
+                            mensaje.remove();
+                            }, 1500);
                             cargarPlatos();
                         },
                         error: function() {
