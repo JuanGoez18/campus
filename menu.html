@@ -241,7 +241,7 @@
         let precios = [];
     
         for (let id in menu) {
-            platos.push(menu[id].nombre);
+            platos.push(`${menu[id].nombre} x${menu[id].cantidad}`);
             precios.push(menu[id].total.toFixed(2));
         }
     

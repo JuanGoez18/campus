@@ -11,7 +11,7 @@ function cargarMenu() {
             let output = '';
             menuItems.forEach(item => { 
                 output += `
-                    <div class="caja">
+                    <div class="caja" title="${item.nombre_plato}">
                         <img src="img-productos/carta-comidas/${item.img}" alt="">
                         <h3>${item.nombre_plato}</h3>
                         <p>${item.descripcion}</p>

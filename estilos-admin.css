@@ -143,17 +143,31 @@
   cursor: pointer;
 }
 
+/*########### pedidos ###########*/
+
+#lista-pedidos{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: stretch;
+  flex-direction: row; /* Asegura que los elementos se coloquen en columna */
+  height: 100%;
+}
+
 .pedido{
   background-color: #fff;
+  min-width: 315px;
+  max-width: 315px;
   border-radius: 10px;
   padding: 10px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
 .pedido p{
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   color: #5e5e5e;
 }
 
@@ -163,13 +177,17 @@
   padding: 5px;
   background-color: #00bb1f;
   border-radius: 5px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-self: flex-end;
+  margin-top: auto; /**/
 }
 
 .pedido button:hover{
   background-color: #009a1a;
   cursor: pointer;
 }
+
+/*######################*/
 
 #solicitudes-pendientes{
   font-size: 15px;
