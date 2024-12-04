@@ -258,7 +258,7 @@ body{
 
 .notification {
     position: absolute;
-    top: 155px;
+    top: 50px;
     right: 10px;
     background-color: red;
     color: white;
@@ -545,6 +545,13 @@ body{
     .buttons button{
         width: 160px;
         height: 45px;
+    }
+
+    .notification {
+        position: absolute;
+        top: 2055px;
+        right: 10px;
+        display: none;
     }
 
     
