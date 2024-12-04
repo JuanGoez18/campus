@@ -152,6 +152,10 @@ body{
 
 .Menubx img {
     width: 100%;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 100px;
 }
 
 .Menubx img:hover {
@@ -257,7 +261,7 @@ body{
 }
 
 .notification {
-    position: absolute;
+    position: fixed;
     top: 50px;
     right: 10px;
     background-color: red;
@@ -545,23 +549,5 @@ body{
     .buttons button{
         width: 160px;
         height: 45px;
-    }
-
-    .notification {
-        position: absolute;
-        top: 2055px;
-        right: 10px;
-        display: none;
-    }
-
-    
-}
-
-@media(max-width:800px){
-    .notification {
-        position: absolute;
-        top: 25px;
-        right: 10px;
-        font-size: 10px;
     }
 }
